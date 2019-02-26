@@ -7,7 +7,6 @@
 public class PageCollection {     
     private final int capacity; //Represents the capacity of this class.
     private Page[] pages; //This array is used to stores the pages this class.
-    private int current; //Current positio(the page referred currently in the pages array).
 
     /**
      * Initialize a new PageCollection class.
@@ -29,7 +28,11 @@ public class PageCollection {
         return capacity;
     }
     
-    public Page getCurrentPage(){
-        return pages[current];
+    /**
+     * @param index The zero-based index of the page you want to get.
+     * @return Page relevant to the given index.
+     */
+    public Page getPage(int index){
+        return (index < 0 || index > capacity - 1) ? null : pages[index];
     }
 }
