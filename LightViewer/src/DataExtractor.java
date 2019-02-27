@@ -2,28 +2,29 @@
  * @author Adeepa Gunathilake
  */
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.text.TextPosition;
+import java.util.*;
+import org.apache.pdfbox.pdmodel.*;
+import org.apache.pdfbox.text.*;
 import java.awt.Dimension;
-import java.util.ArrayList;
 
 public class DataExtractor {
-    private File file = new File("E:/BlenderGuru_KeyboardShortcutGuide_v2.pdf");
     private PDDocument document;
     
     public DataExtractor(){
-        try {
-            document = PDDocument.load(file);
-        } catch (IOException ex) {
-            Logger.getLogger(DataExtractor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        document = null;
+    }
+    
+    public DataExtractor(PDDocument document){
+        this.document = document;
+    }
+
+    public PDDocument getDocument() {
+        return document;
+    }
+
+    public void setDocument(PDDocument document) {
+        this.document = document;
     }
     
     /**
@@ -34,6 +35,8 @@ public class DataExtractor {
      * <p>
      * assume the code is like this,<br>
      * {@code Object[][] arr = extractLines(i);}<br>then,
+     * <li>If you haven't set the document through setDocument() method(or using
+     * constructor) or the document is null, then null value will be returned.</li>
      * <li><b>{@code arr[0]}</b> represents the locations of the text lines. An
      * array of {@code java.awt.Dimension} class is used for this. So you can
      * cast it as per requirement.</li>
@@ -44,9 +47,10 @@ public class DataExtractor {
      * of the page.
      * @return An {@code Object[][]} array where the text lines and dimensions of
      * those lines are stored.
-     * @throws IOException 
+     * @throws IOException
      */
     public Object[][] extractLines(int pageIndex) throws IOException{
+        if(document == null) return null;
         ArrayList<Dimension> linePos = new ArrayList<>();
         ArrayList<String> lines = new ArrayList<>();
         
@@ -93,17 +97,5 @@ public class DataExtractor {
     
     public int getPageCount(){
         return document.getNumberOfPages();
-    }
-    
-    public static void main(String []a){
-        DataExtractor pdf = new DataExtractor();
-        try {
-            Object[][] data = pdf.extractLines(1);
-            //Dimension[] pos = (Dimension[])data[0];
-            //String[] text = (String[]) data[1];
-            System.out.println(pdf.getPageCount());
-        } catch (IOException ex) {
-            Logger.getLogger(DataExtractor.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }
