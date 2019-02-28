@@ -3,11 +3,15 @@
  */
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.io.IOException;
 import java.util.*;
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.text.*;
 import java.awt.Point;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 
 public class DataExtractor {
@@ -58,11 +62,11 @@ public class DataExtractor {
         ArrayList<String> lines = new ArrayList<>();
         ArrayList<PDFont> fonts = new ArrayList<>();
         ArrayList<Float> fontSizes = new ArrayList<>();
-        PDPage page = document.getPage(pageIndex);
         PDFTextStripper stripper = new PDFTextStripper()
         {
             @Override
             protected void processTextPosition(TextPosition text) {
+                super.processTextPosition(text);
                 if(!positions.isEmpty() && 
                         text.getY() == positions.get(positions.size() - 1).getY() 
                         && fonts.get(fonts.size() - 1) == text.getFont()
@@ -75,20 +79,15 @@ public class DataExtractor {
                     positions.add(new Point((int)text.getX(), (int)text.getY()));
                     lines.add(text.getUnicode());
                     fonts.add(text.getFont());
-                    //fontSizes.get(text.getF)
-                    
+                    fontSizes.add(text.getFontSize());
                 }
-                ArrayList<Point> locBuffer = new ArrayList<>();
-                
-                super.processTextPosition(text);
-                
             }
         };
         
         stripper.setStartPage(pageIndex);
         stripper.setEndPage(pageIndex);
-        
         stripper.getText(document);
+        
         Object[][] data = new Object[2][positions.size()];
         positions.toArray(data[0]);
         lines.toArray(data[1]);
@@ -102,5 +101,15 @@ public class DataExtractor {
     
     public int getPageCount(){
         return document.getNumberOfPages();
+    }
+    
+    public static void main(String[] args) {
+        try {
+            File f = new File("E:\\BlenderGuru_KeyboardShortcutGuide_v2.pdf");
+            DataExtractor ext = new DataExtractor(PDDocument.load(f));
+            ext.extractLines(1);
+        } catch (IOException ex) {
+            Logger.getLogger(DataExtractor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
