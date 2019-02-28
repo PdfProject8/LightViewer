@@ -76,12 +76,6 @@ public class DataExtractor {
                             text.getUnicode());
                 }
                 else{
-                    System.out.println(((!positions.isEmpty()) && 
-                        text.getY() == positions.get(positions.size() - 1).getY()) 
-                    + " [" + text.getY() + " != " + (!positions.isEmpty() ?
-                                positions.get(positions.size() - 1).getY() : 0));
-                        //&& fonts.get(fonts.size() - 1) == text.getFont()
-                        //&& fontSizes.get(fontSizes.size() - 1) == text.getFontSize());
                     positions.add(new Point((int)text.getX(), (int)text.getY()));
                     lines.add(text.getUnicode());
                     fonts.add(text.getFont());
