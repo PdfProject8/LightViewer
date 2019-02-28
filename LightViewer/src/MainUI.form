@@ -168,7 +168,7 @@
                       <Component id="ZoomOutButton1" min="-2" pref="81" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jSlider1" min="-2" pref="209" max="-2" attributes="0"/>
+                          <Component id="sliderZoomLevel" min="-2" pref="209" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Component id="labelZoom" min="-2" max="-2" attributes="0"/>
@@ -210,7 +210,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="sliderZoomLevel" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="labelZoom" max="32767" attributes="0"/>
                                   </Group>
@@ -242,6 +242,9 @@
                   <Image iconType="3" name="/OpenPDFImg.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OpenPDFButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ZoomOutButton1">
               <Properties>
@@ -259,6 +262,9 @@
                   <Image iconType="3" name="/ZoomInImg.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZoomInButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="PreviousPageButton1">
               <Properties>
@@ -266,6 +272,9 @@
                   <Image iconType="3" name="/PreviousImg.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PreviousPageButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="NextPageButton1">
               <Properties>
@@ -273,6 +282,9 @@
                   <Image iconType="3" name="/NextImg.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NextPageButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="labelOpenFile">
               <Properties>
@@ -285,7 +297,7 @@
                 <Property name="text" type="java.lang.String" value="Open PDF"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSlider" name="jSlider1">
+            <Component class="javax.swing.JSlider" name="sliderZoomLevel">
               <Properties>
                 <Property name="majorTickSpacing" type="int" value="50"/>
                 <Property name="maximum" type="int" value="200"/>
@@ -296,6 +308,9 @@
                 <Property name="toolTipText" type="java.lang.String" value=""/>
                 <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="sliderZoomLevelStateChanged"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="labelZoom">
               <Properties>
@@ -303,7 +318,7 @@
                   <Font name="Lucida Grande" size="18" style="0"/>
                 </Property>
                 <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="jSlider1"/>
+                  <ComponentRef name="sliderZoomLevel"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Zoom Level"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -320,6 +335,9 @@
                   <Image iconType="3" name="/Zoom100%Img.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Zoom100Button1ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -362,6 +380,9 @@
                   <Image iconType="3" name="/PrintImg.png"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PrintButton1ActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="labelPrint">
               <Properties>
@@ -466,6 +487,9 @@
               <Image iconType="3" name="/ZoomInImg.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZoomInButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ZoomOutButton2">
           <Properties>
@@ -473,6 +497,9 @@
               <Image iconType="3" name="/ZoomOutImg.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ZoomOutButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="PreviousPageButton2">
           <Properties>
@@ -480,6 +507,9 @@
               <Image iconType="3" name="/PreviousImg.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PreviousPageButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="NextPageButton2">
           <Properties>
@@ -487,6 +517,9 @@
               <Image iconType="3" name="/NextImg.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NextPageButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelPreviousPage">
           <Properties>
@@ -549,6 +582,9 @@
               <Image iconType="3" name="/Zoom100%Img.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Zoom100Button2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textFieldPages">
           <Properties>

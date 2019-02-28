@@ -36,7 +36,7 @@ public class MainUI extends javax.swing.JFrame {
         PreviousPageButton1 = new javax.swing.JButton();
         NextPageButton1 = new javax.swing.JButton();
         labelOpenFile = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        sliderZoomLevel = new javax.swing.JSlider();
         labelZoom = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         Zoom100Button1 = new javax.swing.JButton();
@@ -95,6 +95,11 @@ public class MainUI extends javax.swing.JFrame {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         OpenPDFButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OpenPDFImg.png"))); // NOI18N
+        OpenPDFButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpenPDFButtonActionPerformed(evt);
+            }
+        });
 
         ZoomOutButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomOutImg.png"))); // NOI18N
         ZoomOutButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -104,32 +109,57 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         ZoomInButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomInImg.png"))); // NOI18N
+        ZoomInButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZoomInButton1ActionPerformed(evt);
+            }
+        });
 
         PreviousPageButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PreviousImg.png"))); // NOI18N
+        PreviousPageButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreviousPageButton1ActionPerformed(evt);
+            }
+        });
 
         NextPageButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NextImg.png"))); // NOI18N
+        NextPageButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextPageButton1ActionPerformed(evt);
+            }
+        });
 
         labelOpenFile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         labelOpenFile.setLabelFor(OpenPDFButton);
         labelOpenFile.setText("Open PDF");
 
-        jSlider1.setMajorTickSpacing(50);
-        jSlider1.setMaximum(200);
-        jSlider1.setMinimum(25);
-        jSlider1.setMinorTickSpacing(10);
-        jSlider1.setPaintTicks(true);
-        jSlider1.setSnapToTicks(true);
-        jSlider1.setToolTipText("");
-        jSlider1.setName(""); // NOI18N
+        sliderZoomLevel.setMajorTickSpacing(50);
+        sliderZoomLevel.setMaximum(200);
+        sliderZoomLevel.setMinimum(25);
+        sliderZoomLevel.setMinorTickSpacing(10);
+        sliderZoomLevel.setPaintTicks(true);
+        sliderZoomLevel.setSnapToTicks(true);
+        sliderZoomLevel.setToolTipText("");
+        sliderZoomLevel.setName(""); // NOI18N
+        sliderZoomLevel.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderZoomLevelStateChanged(evt);
+            }
+        });
 
         labelZoom.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelZoom.setLabelFor(jSlider1);
+        labelZoom.setLabelFor(sliderZoomLevel);
         labelZoom.setText("Zoom Level");
         labelZoom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         Zoom100Button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom100%Img.png"))); // NOI18N
+        Zoom100Button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Zoom100Button1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout HomeLayout = new javax.swing.GroupLayout(Home);
         Home.setLayout(HomeLayout);
@@ -154,7 +184,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(ZoomOutButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sliderZoomLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(HomeLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(labelZoom)))
@@ -187,7 +217,7 @@ public class MainUI extends javax.swing.JFrame {
                     .addGroup(HomeLayout.createSequentialGroup()
                         .addGroup(HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(HomeLayout.createSequentialGroup()
-                                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sliderZoomLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelZoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(HomeLayout.createSequentialGroup()
@@ -202,6 +232,11 @@ public class MainUI extends javax.swing.JFrame {
         jTabbedPane2.addTab("Home", Home);
 
         PrintButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PrintImg.png"))); // NOI18N
+        PrintButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintButton1ActionPerformed(evt);
+            }
+        });
 
         labelPrint.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         labelPrint.setLabelFor(PrintButton1);
@@ -230,12 +265,32 @@ public class MainUI extends javax.swing.JFrame {
         jTabbedPane2.addTab("Options", Options);
 
         ZoomInButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomInImg.png"))); // NOI18N
+        ZoomInButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZoomInButton2ActionPerformed(evt);
+            }
+        });
 
         ZoomOutButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomOutImg.png"))); // NOI18N
+        ZoomOutButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ZoomOutButton2ActionPerformed(evt);
+            }
+        });
 
         PreviousPageButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PreviousImg.png"))); // NOI18N
+        PreviousPageButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreviousPageButton2ActionPerformed(evt);
+            }
+        });
 
         NextPageButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NextImg.png"))); // NOI18N
+        NextPageButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextPageButton2ActionPerformed(evt);
+            }
+        });
 
         labelPreviousPage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         labelPreviousPage.setLabelFor(PreviousPageButton2);
@@ -258,6 +313,11 @@ public class MainUI extends javax.swing.JFrame {
         labelZoomOut.setText("Zoom Out");
 
         Zoom100Button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom100%Img.png"))); // NOI18N
+        Zoom100Button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Zoom100Button2ActionPerformed(evt);
+            }
+        });
 
         textFieldPages.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
 
@@ -371,6 +431,54 @@ public class MainUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ZoomOutButton1ActionPerformed
 
+    private void OpenPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenPDFButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OpenPDFButtonActionPerformed
+
+    private void PreviousPageButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousPageButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PreviousPageButton1ActionPerformed
+
+    private void NextPageButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPageButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NextPageButton1ActionPerformed
+
+    private void ZoomInButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomInButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ZoomInButton1ActionPerformed
+
+    private void Zoom100Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zoom100Button1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Zoom100Button1ActionPerformed
+
+    private void sliderZoomLevelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderZoomLevelStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sliderZoomLevelStateChanged
+
+    private void NextPageButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPageButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NextPageButton2ActionPerformed
+
+    private void PreviousPageButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousPageButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PreviousPageButton2ActionPerformed
+
+    private void ZoomInButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomInButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ZoomInButton2ActionPerformed
+
+    private void ZoomOutButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomOutButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ZoomOutButton2ActionPerformed
+
+    private void Zoom100Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zoom100Button2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Zoom100Button2ActionPerformed
+
+    private void PrintButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrintButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,7 +539,6 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel labelNextPage;
     private javax.swing.JLabel labelOpenFile;
@@ -443,6 +550,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelZoomIn;
     private javax.swing.JLabel labelZoomOut;
     private javax.swing.JMenuItem menuitm_Open;
+    private javax.swing.JSlider sliderZoomLevel;
     private javax.swing.JTextField textFieldPages;
     // End of variables declaration//GEN-END:variables
 }
