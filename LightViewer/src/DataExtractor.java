@@ -67,19 +67,25 @@ public class DataExtractor {
             @Override
             protected void processTextPosition(TextPosition text) {
                 super.processTextPosition(text);
-                if(!positions.isEmpty() && 
-                        text.getY() == positions.get(positions.size() - 1).getY() 
+                if((!positions.isEmpty()) && 
+                        (int)text.getY() == positions.get(positions.size() - 1).getY() 
                         && fonts.get(fonts.size() - 1) == text.getFont()
-                        && fontSizes.get(0) == text.getFontSize())
+                        && fontSizes.get(fontSizes.size() - 1) == text.getFontSizeInPt())
                 {
                     lines.set(lines.size() - 1, lines.get(lines.size() - 1) +
                             text.getUnicode());
                 }
                 else{
+                    System.out.println(((!positions.isEmpty()) && 
+                        text.getY() == positions.get(positions.size() - 1).getY()) 
+                    + " [" + text.getY() + " != " + (!positions.isEmpty() ?
+                                positions.get(positions.size() - 1).getY() : 0));
+                        //&& fonts.get(fonts.size() - 1) == text.getFont()
+                        //&& fontSizes.get(fontSizes.size() - 1) == text.getFontSize());
                     positions.add(new Point((int)text.getX(), (int)text.getY()));
                     lines.add(text.getUnicode());
                     fonts.add(text.getFont());
-                    fontSizes.add(text.getFontSize());
+                    fontSizes.add(text.getFontSizeInPt());
                 }
             }
         };
@@ -88,15 +94,17 @@ public class DataExtractor {
         stripper.setEndPage(pageIndex);
         stripper.getText(document);
         
-        Object[][] data = new Object[2][positions.size()];
+        Object[][] data = new Object[4][positions.size()];
         positions.toArray(data[0]);
         lines.toArray(data[1]);
+        fonts.toArray(data[2]);
+        fontSizes.toArray(data[3]);
         return data;
     }
     
     public Dimension getPageSize(int pageIndex){
-        return new Dimension((int)document.getPage(pageIndex).getMediaBox().getWidth(),
-                (int)document.getPage(pageIndex).getMediaBox().getWidth());
+        return new Dimension((int)document.getPage(pageIndex).getCropBox().getWidth(),
+                (int)document.getPage(pageIndex).getCropBox().getWidth());
     }
     
     public int getPageCount(){
@@ -112,4 +120,12 @@ public class DataExtractor {
             Logger.getLogger(DataExtractor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    protected void finalize() throws Throwable {
+        document.close();
+        super.finalize();
+    }
+    
+    
 }
