@@ -61,8 +61,19 @@ public class Page {
             txt.setBackground(new Color(0,0,0,0));
             txt.setEditable(false);
             lines.add(txt);
-            System.out.println(fd.getFontName() + " :-) "  + txtFont.getFamily());
+            System.out.println(txtFont.getFamily());
         }
         return Arrays.copyOf(lines.toArray(), lines.size(), JTextArea[].class);
+    }
+    
+    public void zoom(int value) throws IOException, FontFormatException{
+        if(page == null) createPage();
+        Component[] comp = page.getComponents();
+        value = value / 100;
+        for(int i = 0; i < comp.length; i++){
+            Font currentFont = comp[i].getFont();
+            //comp[i].setFont(new Font(currentFont.getFamily(), currentFont.getStyle(),
+            //);
+        }
     }
 }

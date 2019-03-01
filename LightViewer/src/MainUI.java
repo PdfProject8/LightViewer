@@ -1,5 +1,3 @@
-/*
- */
 
 /**
  *
@@ -23,381 +21,75 @@ public class MainUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollBar1 = new javax.swing.JScrollBar();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        Home = new javax.swing.JPanel();
-        jSeparator1 = new javax.swing.JSeparator();
-        OpenPDFButton = new javax.swing.JButton();
-        ZoomOutButton1 = new javax.swing.JButton();
-        ZoomInButton1 = new javax.swing.JButton();
-        PreviousPageButton1 = new javax.swing.JButton();
-        NextPageButton1 = new javax.swing.JButton();
-        labelOpenFile = new javax.swing.JLabel();
-        sliderZoomLevel = new javax.swing.JSlider();
-        labelZoom = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        Zoom100Button1 = new javax.swing.JButton();
-        Options = new javax.swing.JPanel();
-        PrintButton1 = new javax.swing.JButton();
-        labelPrint = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        ZoomInButton2 = new javax.swing.JButton();
-        ZoomOutButton2 = new javax.swing.JButton();
-        PreviousPageButton2 = new javax.swing.JButton();
-        NextPageButton2 = new javax.swing.JButton();
-        labelPreviousPage = new javax.swing.JLabel();
-        labelNextPage = new javax.swing.JLabel();
-        labelZoomIn = new javax.swing.JLabel();
-        labelZoom100 = new javax.swing.JLabel();
-        labelZoomOut = new javax.swing.JLabel();
-        Zoom100Button2 = new javax.swing.JButton();
-        textFieldPages = new javax.swing.JTextField();
-        labelPages = new javax.swing.JLabel();
+        pnl_logo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        statusBar = new javax.swing.JPanel();
+        btnPrev = new javax.swing.JButton();
+        txtPgNo = new javax.swing.JTextField();
+        btnNext = new javax.swing.JButton();
+        pnl_pageContainer = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuitm_Open = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(750, 600));
+        setMinimumSize(new java.awt.Dimension(400, 400));
 
-        jScrollPane2.setViewportView(jEditorPane1);
+        pnl_logo.setBackground(new java.awt.Color(255, 249, 178));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 3, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Light View");
+
+        javax.swing.GroupLayout pnl_logoLayout = new javax.swing.GroupLayout(pnl_logo);
+        pnl_logo.setLayout(pnl_logoLayout);
+        pnl_logoLayout.setHorizontalGroup(
+            pnl_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())))
+        pnl_logoLayout.setVerticalGroup(
+            pnl_logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
+        statusBar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        statusBar.setLayout(new java.awt.GridBagLayout());
 
-        Home.setBackground(new java.awt.Color(255, 255, 255));
+        btnPrev.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnPrev.setText("\u25C4 Prev");
+        statusBar.add(btnPrev, new java.awt.GridBagConstraints());
 
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        txtPgNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPgNo.setText("jTextField1");
+        statusBar.add(txtPgNo, new java.awt.GridBagConstraints());
 
-        OpenPDFButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/OpenPDFImg.png"))); // NOI18N
-        OpenPDFButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OpenPDFButtonActionPerformed(evt);
-            }
-        });
+        btnNext.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        btnNext.setText("Next \u25BA");
+        statusBar.add(btnNext, new java.awt.GridBagConstraints());
 
-        ZoomOutButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomOutImg.png"))); // NOI18N
-        ZoomOutButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZoomOutButton1ActionPerformed(evt);
-            }
-        });
-
-        ZoomInButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomInImg.png"))); // NOI18N
-        ZoomInButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZoomInButton1ActionPerformed(evt);
-            }
-        });
-
-        PreviousPageButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PreviousImg.png"))); // NOI18N
-        PreviousPageButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PreviousPageButton1ActionPerformed(evt);
-            }
-        });
-
-        NextPageButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NextImg.png"))); // NOI18N
-        NextPageButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NextPageButton1ActionPerformed(evt);
-            }
-        });
-
-        labelOpenFile.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelOpenFile.setLabelFor(OpenPDFButton);
-        labelOpenFile.setText("Open PDF");
-
-        sliderZoomLevel.setMajorTickSpacing(50);
-        sliderZoomLevel.setMaximum(200);
-        sliderZoomLevel.setMinimum(25);
-        sliderZoomLevel.setMinorTickSpacing(10);
-        sliderZoomLevel.setPaintTicks(true);
-        sliderZoomLevel.setSnapToTicks(true);
-        sliderZoomLevel.setToolTipText("");
-        sliderZoomLevel.setName(""); // NOI18N
-        sliderZoomLevel.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sliderZoomLevelStateChanged(evt);
-            }
-        });
-
-        labelZoom.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelZoom.setLabelFor(sliderZoomLevel);
-        labelZoom.setText("Zoom Level");
-        labelZoom.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        Zoom100Button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom100%Img.png"))); // NOI18N
-        Zoom100Button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Zoom100Button1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout HomeLayout = new javax.swing.GroupLayout(Home);
-        Home.setLayout(HomeLayout);
-        HomeLayout.setHorizontalGroup(
-            HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(OpenPDFButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PreviousPageButton1)
-                .addGap(35, 35, 35)
-                .addComponent(NextPageButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ZoomInButton1)
-                .addGap(28, 28, 28)
-                .addComponent(ZoomOutButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sliderZoomLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(HomeLayout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(labelZoom)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Zoom100Button1)
-                .addContainerGap(27, Short.MAX_VALUE))
+        javax.swing.GroupLayout pnl_pageContainerLayout = new javax.swing.GroupLayout(pnl_pageContainer);
+        pnl_pageContainer.setLayout(pnl_pageContainerLayout);
+        pnl_pageContainerLayout.setHorizontalGroup(
+            pnl_pageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        HomeLayout.setVerticalGroup(
-            HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(HomeLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(HomeLayout.createSequentialGroup()
-                        .addComponent(PreviousPageButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(HomeLayout.createSequentialGroup()
-                        .addComponent(NextPageButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(HomeLayout.createSequentialGroup()
-                        .addComponent(ZoomInButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(HomeLayout.createSequentialGroup()
-                        .addComponent(ZoomOutButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(HomeLayout.createSequentialGroup()
-                        .addComponent(Zoom100Button1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(HomeLayout.createSequentialGroup()
-                        .addGroup(HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(HomeLayout.createSequentialGroup()
-                                .addComponent(sliderZoomLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelZoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(HomeLayout.createSequentialGroup()
-                                .addComponent(labelOpenFile, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(6, 6, 6))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeLayout.createSequentialGroup()
-                        .addComponent(OpenPDFButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-
-        jTabbedPane2.addTab("Home", Home);
-
-        PrintButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PrintImg.png"))); // NOI18N
-        PrintButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PrintButton1ActionPerformed(evt);
-            }
-        });
-
-        labelPrint.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelPrint.setLabelFor(PrintButton1);
-        labelPrint.setText("Print Document");
-
-        javax.swing.GroupLayout OptionsLayout = new javax.swing.GroupLayout(Options);
-        Options.setLayout(OptionsLayout);
-        OptionsLayout.setHorizontalGroup(
-            OptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(OptionsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(PrintButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labelPrint)
-                .addContainerGap(765, Short.MAX_VALUE))
-        );
-        OptionsLayout.setVerticalGroup(
-            OptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PrintButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-            .addGroup(OptionsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelPrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane2.addTab("Options", Options);
-
-        ZoomInButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomInImg.png"))); // NOI18N
-        ZoomInButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZoomInButton2ActionPerformed(evt);
-            }
-        });
-
-        ZoomOutButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ZoomOutImg.png"))); // NOI18N
-        ZoomOutButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ZoomOutButton2ActionPerformed(evt);
-            }
-        });
-
-        PreviousPageButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/PreviousImg.png"))); // NOI18N
-        PreviousPageButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PreviousPageButton2ActionPerformed(evt);
-            }
-        });
-
-        NextPageButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/NextImg.png"))); // NOI18N
-        NextPageButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NextPageButton2ActionPerformed(evt);
-            }
-        });
-
-        labelPreviousPage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelPreviousPage.setLabelFor(PreviousPageButton2);
-        labelPreviousPage.setText("Previous Page");
-
-        labelNextPage.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelNextPage.setLabelFor(NextPageButton2);
-        labelNextPage.setText("Next Page");
-
-        labelZoomIn.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelZoomIn.setLabelFor(ZoomInButton2);
-        labelZoomIn.setText("Zoom In");
-
-        labelZoom100.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelZoom100.setLabelFor(Zoom100Button2);
-        labelZoom100.setText("Zoom to 100%");
-
-        labelZoomOut.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        labelZoomOut.setLabelFor(ZoomOutButton2);
-        labelZoomOut.setText("Zoom Out");
-
-        Zoom100Button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Zoom100%Img.png"))); // NOI18N
-        Zoom100Button2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Zoom100Button2ActionPerformed(evt);
-            }
-        });
-
-        textFieldPages.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-
-        labelPages.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        labelPages.setLabelFor(textFieldPages);
-        labelPages.setText("/");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(textFieldPages, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPages, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(ZoomOutButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelZoomOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(NextPageButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelNextPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(ZoomInButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelZoomIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(Zoom100Button2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelZoom100))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(PreviousPageButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelPreviousPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldPages, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPages, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NextPageButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelNextPage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PreviousPageButton2)
-                    .addComponent(labelPreviousPage, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ZoomInButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelZoomIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ZoomOutButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelZoomOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Zoom100Button2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelZoom100, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(418, Short.MAX_VALUE))
+        pnl_pageContainerLayout.setVerticalGroup(
+            pnl_pageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 496, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
 
-        menuitm_Open.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images (1).png"))); // NOI18N
+        menuitm_Open.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         menuitm_Open.setText("Open");
+        menuitm_Open.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuitm_OpenActionPerformed(evt);
+            }
+        });
         jMenu1.add(menuitm_Open);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -405,79 +97,27 @@ public class MainUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addComponent(jTabbedPane2)
+            .addComponent(pnl_logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(statusBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE)
+            .addComponent(pnl_pageContainer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnl_pageContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(statusBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ZoomOutButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomOutButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ZoomOutButton1ActionPerformed
-
-    private void OpenPDFButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenPDFButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OpenPDFButtonActionPerformed
-
-    private void PreviousPageButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousPageButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PreviousPageButton1ActionPerformed
-
-    private void NextPageButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPageButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NextPageButton1ActionPerformed
-
-    private void ZoomInButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomInButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ZoomInButton1ActionPerformed
-
-    private void Zoom100Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zoom100Button1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Zoom100Button1ActionPerformed
-
-    private void sliderZoomLevelStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderZoomLevelStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sliderZoomLevelStateChanged
-
-    private void NextPageButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextPageButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NextPageButton2ActionPerformed
-
-    private void PreviousPageButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousPageButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PreviousPageButton2ActionPerformed
-
-    private void ZoomInButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomInButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ZoomInButton2ActionPerformed
-
-    private void ZoomOutButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ZoomOutButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ZoomOutButton2ActionPerformed
-
-    private void Zoom100Button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zoom100Button2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Zoom100Button2ActionPerformed
-
-    private void PrintButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PrintButton1ActionPerformed
+    private void menuitm_OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitm_OpenActionPerformed
+        txtPgNo.setText("20");
+    }//GEN-LAST:event_menuitm_OpenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,42 +155,15 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Home;
-    private javax.swing.JButton NextPageButton1;
-    private javax.swing.JButton NextPageButton2;
-    private javax.swing.JButton OpenPDFButton;
-    private javax.swing.JPanel Options;
-    private javax.swing.JButton PreviousPageButton1;
-    private javax.swing.JButton PreviousPageButton2;
-    private javax.swing.JButton PrintButton1;
-    private javax.swing.JButton Zoom100Button1;
-    private javax.swing.JButton Zoom100Button2;
-    private javax.swing.JButton ZoomInButton1;
-    private javax.swing.JButton ZoomInButton2;
-    private javax.swing.JButton ZoomOutButton1;
-    private javax.swing.JButton ZoomOutButton2;
-    private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JLabel labelNextPage;
-    private javax.swing.JLabel labelOpenFile;
-    private javax.swing.JLabel labelPages;
-    private javax.swing.JLabel labelPreviousPage;
-    private javax.swing.JLabel labelPrint;
-    private javax.swing.JLabel labelZoom;
-    private javax.swing.JLabel labelZoom100;
-    private javax.swing.JLabel labelZoomIn;
-    private javax.swing.JLabel labelZoomOut;
     private javax.swing.JMenuItem menuitm_Open;
-    private javax.swing.JSlider sliderZoomLevel;
-    private javax.swing.JTextField textFieldPages;
+    private javax.swing.JPanel pnl_logo;
+    private javax.swing.JPanel pnl_pageContainer;
+    private javax.swing.JPanel statusBar;
+    private javax.swing.JTextField txtPgNo;
     // End of variables declaration//GEN-END:variables
 }

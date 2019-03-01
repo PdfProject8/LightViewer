@@ -34,11 +34,6 @@ public class Fonts {
                         break;
                 }
             }
-            if(f[0].contains("+")){
-                String[] temp = f[0].split("+");
-                name = (temp.length > 1) ? temp[1] : temp[temp.length - 1]; 
-            }
-            
             name = f[0];
         }
         return new Font((family == null) ? name : family, type, size);
