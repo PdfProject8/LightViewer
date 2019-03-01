@@ -1,8 +1,20 @@
+package lightview.gui;
 
 /**
- *
  * @author Viduranga Landers
  */
+
+import java.awt.Dimension;
+import lightview.util.Page;
+import lightview.util.*;
+import java.awt.FontFormatException;
+import java.awt.GridBagLayout;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
+import org.apache.pdfbox.pdmodel.PDDocument;
 public class MainUI extends javax.swing.JFrame {
 
     /**
@@ -71,11 +83,11 @@ public class MainUI extends javax.swing.JFrame {
         pnl_pageContainer.setLayout(pnl_pageContainerLayout);
         pnl_pageContainerLayout.setHorizontalGroup(
             pnl_pageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 724, Short.MAX_VALUE)
         );
         pnl_pageContainerLayout.setVerticalGroup(
             pnl_pageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 496, Short.MAX_VALUE)
+            .addGap(0, 517, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
@@ -119,9 +131,20 @@ public class MainUI extends javax.swing.JFrame {
         txtPgNo.setText("20");
     }//GEN-LAST:event_menuitm_OpenActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    public void showPage(JPanel page){
+        JPanel pnl = new JPanel(null);
+        pnl.setPreferredSize(new Dimension(page.getWidth() + 20, 
+                page.getHeight() + 20));
+        pnl.setSize(pnl_pageContainer.getSize());
+        page.setLocation((pnl.getWidth() / 2) - (page.getWidth() / 2) , 10);
+        pnl.add(page);
+        JScrollPane scrollpane = new JScrollPane(pnl);
+        scrollpane.setLayout(new ScrollPaneLayout());
+        scrollpane.setSize(pnl_pageContainer.getSize());
+        pnl_pageContainer.add(scrollpane);
+        pnl_pageContainer.repaint();
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -146,12 +169,16 @@ public class MainUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainUI().setVisible(true);
-            }
-        });
+        MainUI ui = new MainUI();
+        ui.setVisible(true);
+        try {
+            File f = new File("E:\\BlenderGuru_KeyboardShortcutGuide_v2.pdf");
+            Page p = new Page(PDDocument.load(f), 1);
+            ui.showPage(p.getPage());
+            ui.repaint();
+        } catch (IOException | FontFormatException ex) {
+            Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

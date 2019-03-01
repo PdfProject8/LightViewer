@@ -1,3 +1,5 @@
+package lightview.util;
+
 
 /**
  * This is a collection class for Pages.

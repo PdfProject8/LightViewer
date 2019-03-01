@@ -1,11 +1,8 @@
+package lightview.util;
 
 import java.io.File;
 
-/*
- */
-
 /**
- *
  * @author Viduranga Landers
  */
 public class DataCache {
