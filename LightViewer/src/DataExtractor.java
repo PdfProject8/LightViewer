@@ -97,22 +97,13 @@ public class DataExtractor {
     }
     
     public Dimension getPageSize(int pageIndex){
+        document.getPage(pageIndex);
         return new Dimension((int)document.getPage(pageIndex).getCropBox().getWidth(),
                 (int)document.getPage(pageIndex).getCropBox().getWidth());
     }
     
     public int getPageCount(){
         return document.getNumberOfPages();
-    }
-    
-    public static void main(String[] args) {
-        try {
-            File f = new File("E:\\BlenderGuru_KeyboardShortcutGuide_v2.pdf");
-            DataExtractor ext = new DataExtractor(PDDocument.load(f));
-            ext.extractLines(1);
-        } catch (IOException ex) {
-            Logger.getLogger(DataExtractor.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     @Override

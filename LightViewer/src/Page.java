@@ -5,7 +5,7 @@
 
 import java.awt.*;
 import java.awt.font.TextAttribute;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import org.apache.pdfbox.pdmodel.*;
@@ -22,23 +22,23 @@ public class Page {
         extractor = new DataExtractor(doc);
     }
     
-    public JPanel getPage() throws IOException{
+    public JPanel getPage() throws IOException, FontFormatException{
         createPage();
         return page;
     }
     
-    public void createPage() throws IOException{
+    public void createPage() throws IOException, FontFormatException{
         page = new JPanel();
         page.setLayout(null);
         page.setBackground(Color.WHITE);
-        page.setSize(extractor.getPageSize(pageIndex));
+        page.setSize(extractor.getPageSize(pageIndex - 1));
         JTextArea[] lines = createText();
         for(int i = 0; i < lines.length; i++){
             page.add(lines[i]);
         }
     }
     
-    private JTextArea[] createText() throws IOException{
+    private JTextArea[] createText() throws IOException, FontFormatException{
         ArrayList<JTextArea> lines = new ArrayList<>();
         Object[][] data = extractor.extractLines(pageIndex);
         Point[] loc = Arrays.copyOf(data[0], data[0].length, Point[].class);
@@ -51,17 +51,8 @@ public class Page {
             int size = (int)sizes[i].floatValue();
             System.out.println(size);
             JTextArea txt = new JTextArea();
-            txt.setSize(800, size + 3);
-            Map<TextAttribute, Object> attributes = new HashMap<>();
-            
-            attributes.put(TextAttribute.SIZE, size);
-            attributes.put(TextAttribute.FAMILY, 
-                    font[i].getFontDescriptor().getFontFamily());
-            attributes.put(TextAttribute.WEIGHT, 
-                    font[i].getFontDescriptor().getFontWeight());
-            
-            Font txtFont = new Font(attributes);
-            //txtFont.
+            txt.setSize(800, size + 10);
+            Font txtFont = Fonts.getFont(font[i], size);
             txt.setFont(txtFont);
             txt.setText(text[i]);
             txt.setForeground(Color.BLACK);
@@ -70,7 +61,7 @@ public class Page {
             txt.setBackground(new Color(0,0,0,0));
             txt.setEditable(false);
             lines.add(txt);
-            System.out.println(fd.getFontFamily());
+            System.out.println(fd.getFontName() + " :-) "  + txtFont.getFamily());
         }
         return Arrays.copyOf(lines.toArray(), lines.size(), JTextArea[].class);
     }

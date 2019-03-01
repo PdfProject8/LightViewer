@@ -59,11 +59,13 @@ public class TestFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            File f = new File("E:\\BlenderGuru_KeyboardShortcutGuide_v2.pdf");
+            File f = new File("E:\\new.pdf");
             Page p = new Page(PDDocument.load(f), 1);
             add(p.getPage());
             repaint();
         } catch (IOException ex) {
+            Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FontFormatException ex) {
             Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
