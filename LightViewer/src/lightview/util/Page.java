@@ -39,6 +39,10 @@ public class Page {
         }
     }
     
+    private void getImages(){
+        
+    }
+    
     private JTextArea[] createText() throws IOException{
         ArrayList<JTextArea> lines = new ArrayList<>();
         Object[][] data = extractor.extractLines(pageIndex);

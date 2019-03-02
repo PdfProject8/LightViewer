@@ -11,7 +11,14 @@ import java.util.*;
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.text.*;
 import java.awt.Point;
+import org.apache.pdfbox.contentstream.PDFStreamEngine;
+import org.apache.pdfbox.contentstream.operator.Operator;
+import org.apache.pdfbox.cos.COSBase;
+import org.apache.pdfbox.cos.COSName;
 import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.graphics.PDXObject;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImage;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 public class DataExtractor {
     private PDDocument document;
@@ -93,6 +100,27 @@ public class DataExtractor {
         fonts.toArray(data[2]);
         fontSizes.toArray(data[3]);
         return data;
+    }
+    
+    public void getImages(){
+        PDFStreamEngine streamEngine = new PDFStreamEngine() {
+            @Override
+            protected void processOperator(Operator operator, List<COSBase> operands) throws IOException {
+                String operation = operator.getName();
+                if("Do".equals(operation)){
+                    COSName objectName = (COSName) operands.get(0);
+                    PDXObject xobject = getResources().getXObject( objectName );
+                    if(xobject instanceof PDImageXObject){
+                        PDImageXObject image = (PDImageXObject)xobject;
+                        int imageWidth = image.getWidth();  
+                        int imageHeight = image.getHeight();
+                        
+                    }
+                }
+                else super.processOperator(operator, operands);
+            }
+            
+        };
     }
     
     public Dimension getPageSize(int pageIndex){
