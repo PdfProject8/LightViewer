@@ -67,8 +67,6 @@ public class TestFrame extends javax.swing.JFrame {
             repaint();
         } catch (IOException ex) {
             Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FontFormatException ex) {
-            Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

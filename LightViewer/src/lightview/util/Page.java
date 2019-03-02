@@ -6,7 +6,6 @@ package lightview.util;
  */
 
 import java.awt.*;
-import java.awt.font.TextAttribute;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
@@ -24,12 +23,12 @@ public class Page {
         extractor = new DataExtractor(doc);
     }
     
-    public JPanel getPage() throws IOException, FontFormatException{
+    public JPanel getPage() throws IOException{
         createPage();
         return page;
     }
     
-    public void createPage() throws IOException, FontFormatException{
+    public void createPage() throws IOException{
         page = new JPanel();
         page.setLayout(null);
         page.setBackground(Color.WHITE);
@@ -40,7 +39,7 @@ public class Page {
         }
     }
     
-    private JTextArea[] createText() throws IOException, FontFormatException{
+    private JTextArea[] createText() throws IOException{
         ArrayList<JTextArea> lines = new ArrayList<>();
         Object[][] data = extractor.extractLines(pageIndex);
         Point[] loc = Arrays.copyOf(data[0], data[0].length, Point[].class);
@@ -68,8 +67,8 @@ public class Page {
         return Arrays.copyOf(lines.toArray(), lines.size(), JTextArea[].class);
     }
     
-    public void zoom(int value) throws IOException, FontFormatException{
-        if(page == null) createPage();
+    public void zoom(int value) {
+        //if(page == null) createPage();
         Component[] comp = page.getComponents();
         value = value / 100;
         for(int i = 0; i < comp.length; i++){
@@ -77,5 +76,6 @@ public class Page {
             //comp[i].setFont(new Font(currentFont.getFamily(), currentFont.getStyle(),
             //);
         }
+        throw new UnsupportedOperationException("Not implemented yet");
     }
 }

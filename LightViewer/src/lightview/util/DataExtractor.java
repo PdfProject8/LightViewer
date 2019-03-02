@@ -11,9 +11,6 @@ import java.util.*;
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.text.*;
 import java.awt.Point;
-import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 
 public class DataExtractor {
@@ -100,8 +97,8 @@ public class DataExtractor {
     
     public Dimension getPageSize(int pageIndex){
         document.getPage(pageIndex);
-        return new Dimension((int)document.getPage(pageIndex).getCropBox().getWidth(),
-                (int)document.getPage(pageIndex).getCropBox().getWidth());
+        return new Dimension((int)document.getPage(pageIndex).getMediaBox().getWidth(),
+                (int)document.getPage(pageIndex).getMediaBox().getHeight());
     }
     
     public int getPageCount(){
@@ -110,7 +107,7 @@ public class DataExtractor {
 
     @Override
     protected void finalize() throws Throwable {
-        document.close();
+        //document.close();
         super.finalize();
     }
     

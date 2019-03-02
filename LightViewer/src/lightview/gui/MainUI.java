@@ -4,17 +4,15 @@ package lightview.gui;
  * @author Viduranga Landers
  */
 
-import java.awt.Dimension;
-import lightview.util.Page;
+import java.awt.*;
 import lightview.util.*;
-import java.awt.FontFormatException;
-import java.awt.GridBagLayout;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.pdfbox.pdmodel.PDDocument;
+
 public class MainUI extends javax.swing.JFrame {
 
     /**
@@ -22,7 +20,6 @@ public class MainUI extends javax.swing.JFrame {
      */
     public MainUI() {
         initComponents();
-        loadPdf();
     }
     
     @SuppressWarnings("unchecked")
@@ -36,11 +33,13 @@ public class MainUI extends javax.swing.JFrame {
         txtPgNo = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
         pnl_pageContainer = new javax.swing.JPanel();
+        ofd = new javax.swing.JFileChooser();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuitm_Open = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setMinimumSize(new java.awt.Dimension(400, 400));
 
         pnl_logo.setBackground(new java.awt.Color(255, 249, 178));
@@ -65,14 +64,25 @@ public class MainUI extends javax.swing.JFrame {
 
         btnPrev.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnPrev.setText("\u25C4 Prev");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
         statusBar.add(btnPrev, new java.awt.GridBagConstraints());
 
         txtPgNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtPgNo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPgNo.setText("jTextField1");
         statusBar.add(txtPgNo, new java.awt.GridBagConstraints());
 
         btnNext.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         btnNext.setText("Next \u25BA");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
         statusBar.add(btnNext, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout pnl_pageContainerLayout = new javax.swing.GroupLayout(pnl_pageContainer);
@@ -84,6 +94,11 @@ public class MainUI extends javax.swing.JFrame {
         pnl_pageContainerLayout.setVerticalGroup(
             pnl_pageContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 517, Short.MAX_VALUE)
+        );
+
+        ofd.setAcceptAllFileFilterUsed(false);
+        ofd.setCurrentDirectory(null);
+        ofd.setFileFilter(new FileNameExtensionFilter("PDF files", "pdf")
         );
 
         jMenu1.setText("File");
@@ -124,10 +139,37 @@ public class MainUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuitm_OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuitm_OpenActionPerformed
-        txtPgNo.setText("20");
+        if(ofd.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
+            try {
+                DataCache dc = DataCache.getInstance();
+                dc.setCurrentFile(ofd.getSelectedFile());
+                dc.setDoc(PDDocument.load(dc.getCurrentFile()));
+                if((new DataExtractor(dc.getDoc())).getPageCount() > 0) dc.setCurrentPage(1);
+                loadPdf();
+            } catch (IOException ex) {
+                Logger.getLogger(MainUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_menuitm_OpenActionPerformed
 
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        DataCache dc = DataCache.getInstance();
+        if(dc.getDoc() == null) return;
+        else if(dc.getDoc().getNumberOfPages() <= dc.getCurrentPage()) return;
+        dc.setCurrentPage(dc.getCurrentPage() + 1);
+        loadPdf();
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        DataCache dc = DataCache.getInstance();
+        if(dc.getDoc() == null) return;
+        else if(dc.getCurrentPage() == 1) return;
+        dc.setCurrentPage(dc.getCurrentPage() - 1);
+        loadPdf();
+    }//GEN-LAST:event_btnPrevActionPerformed
+
     public void showPage(JPanel page){
+        pnl_pageContainer.removeAll();
         JPanel pnl = new JPanel(null);
         pnl.setPreferredSize(new Dimension(page.getWidth() + 20, 
                 page.getHeight() + 20));
@@ -137,16 +179,29 @@ public class MainUI extends javax.swing.JFrame {
         JScrollPane scrollpane = new JScrollPane(pnl);
         scrollpane.setLayout(new ScrollPaneLayout());
         scrollpane.setSize(pnl_pageContainer.getSize());
+        scrollpane.getVerticalScrollBar().setUnitIncrement(10);
         pnl_pageContainer.add(scrollpane);
         pnl_pageContainer.repaint();
     }
 
     public void loadPdf(){
-        if(DataCache.getCurrentFile() == null)return;
+        DataCache cache = DataCache.getInstance();
+        try{
+            if(cache.getDoc() == null) return;
+            PDDocument doc = cache.getDoc();
+            DataExtractor de = new DataExtractor(doc);
+            if(cache.getCurrentPage() < 1 || 
+                    cache.getCurrentPage() > de.getPageCount()) return;
+            Page p = new Page(doc, cache.getCurrentPage());
+            showPage(p.getPage());
+            txtPgNo.setText(Integer.toString(cache.getCurrentPage())); 
+            repaint();
+        } catch(IOException e){
+            
+        }
     }
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -171,14 +226,6 @@ public class MainUI extends javax.swing.JFrame {
 
         MainUI ui = new MainUI();
         ui.setVisible(true);
-        try {
-            File f = new File("E:\\BlenderGuru_KeyboardShortcutGuide_v2.pdf");
-            Page p = new Page(PDDocument.load(f), 2);
-            ui.showPage(p.getPage());
-            ui.repaint();
-        } catch (IOException | FontFormatException ex) {
-            Logger.getLogger(TestFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -188,6 +235,7 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuitm_Open;
+    private javax.swing.JFileChooser ofd;
     private javax.swing.JPanel pnl_logo;
     private javax.swing.JPanel pnl_pageContainer;
     private javax.swing.JPanel statusBar;
