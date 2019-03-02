@@ -73,7 +73,6 @@ public class MainUI extends javax.swing.JFrame {
 
         txtPgNo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtPgNo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPgNo.setText("jTextField1");
         statusBar.add(txtPgNo, new java.awt.GridBagConstraints());
 
         btnNext.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
